@@ -8,11 +8,12 @@ let prev;
 let next = 0;
 
 function leafSlider(next) {
-    sliderItems.forEach(element => element.classList.remove('slider__item_active'));
+    sliderItems[prev].classList.toggle('slider__item_active');
     sliderItems[next].classList.toggle('slider__item_active');
 }
 
 sliderArrowPrev.onclick = () => {
+    prev = next;
     next -= 1;
     if (next < 0) {
         next = sliderItems.length - 1;
@@ -20,6 +21,7 @@ sliderArrowPrev.onclick = () => {
     leafSlider(next);
 }
 sliderArrowNext.onclick = () => {
+    prev = next;
     next += 1;
     if (next > sliderItems.length - 1) {
         next = 0;
