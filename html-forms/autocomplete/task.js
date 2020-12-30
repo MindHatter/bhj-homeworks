@@ -1,3 +1,5 @@
+'use strict';
+
 class Autocomplete {
   constructor( container ) {
     this.container = container;
@@ -19,7 +21,6 @@ class Autocomplete {
 
       this.onSearch();
     });
-
 
     this.searchInput.addEventListener( 'input', e => this.onSearch());
 
@@ -68,25 +69,15 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    /*
-      TODO: этот метод нужно дописать
-      text - фраза, которую вводят в поле поиска
-      Метод должен вернуть массив.
-
-      Он формируется на основе списка опций select-элемента (this.input)
-      Подходящие опции - те, чей текст содержит то, что есть в аргументе text
-      Необходимо вернуть массив объектов со свойствами:
-      {
-        text: 'Содержимое <option>',
-        value: 'Содержимое атрибута value'
+    const matches = [];
+    const options = this.input.options;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].text.includes(text)) {
+        matches.push({text: options[i].textContent, value: options[i].value});
+        console.log(matches);
       }
-    */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    }
+    return matches;
   }
 }
 
