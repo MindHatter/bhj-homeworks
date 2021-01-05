@@ -8,9 +8,7 @@ xhr.open('GET', 'https://netology-slow-rest.herokuapp.com');
 xhr.onreadystatechange = function () {
     if (xhr.readyState === xhr.DONE) {
         let data = JSON.parse(this.responseText).response.Valute;
-        console.log(data);
         for (let key in data) {
-            console.log(key);
             items.insertAdjacentHTML('beforeend', 
             `<div class="item">
             <div class="item__code">
